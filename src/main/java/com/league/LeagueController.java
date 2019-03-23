@@ -1,6 +1,8 @@
 package com.league;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,8 +29,18 @@ public class LeagueController {
         return leagueService.getAllTeams();
     }
 
+    @PostMapping("/addplayers")
+    public List<Player> addPlayer( @RequestBody Player player) {
+        return leagueService.addPlayer(player);
+    }
+
+    @PostMapping("/addteam")
+    public List<Team> addTeam(  @RequestBody Team team) {
+        return leagueService.addTeam(team);
+    }
+
     @RequestMapping("/scorecalc")
-    public List<Team> updateScore(int teamId,String status) {
+    public List<Player> updateScore(int teamId,String status) {
         return leagueService.updateScore(teamId,status);
     }
 

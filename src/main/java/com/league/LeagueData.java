@@ -23,11 +23,12 @@ public class LeagueData {
     }
 
     public List<Player> getAllPlayer(){
-        return playersLst;
+        return  this.playersLst;
     }
 
     public List<Player> addPlayer(Player p){
-        playersLst.add(p);
-        return playersLst;
+        this.playersLst.add(p);
+        return  this.playersLst;
     }
+
 }

@@ -1,11 +1,16 @@
 package com.league;
 
+import java.util.List;
+
 public class Player {
 
     public int playId;
     public String playerName;
     public String email;
     public int score;
+    public List<Integer> teamLst;
+
+
 
     public int getPlayId() {
         return playId;
@@ -37,5 +42,13 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public List<Integer> getTeamLst() {
+        return teamLst;
+    }
+
+    public void setTeamLst(List<Integer> teamLst) {
+        this.teamLst = teamLst;
     }
 }
