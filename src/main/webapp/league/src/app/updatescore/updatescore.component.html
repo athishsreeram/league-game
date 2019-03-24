@@ -1,0 +1,18 @@
+<div class="col-md-6">
+  <h2 class="text-center">Update Score</h2>
+  <form>
+    <div class="form-group">
+      <label for="teamId">Team Id:</label>
+      <input [(ngModel)]="scorer.teamId" placeholder="TeamId" name="teamId" class="form-control" id="teamId">
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <input [(ngModel)]="scorer.status" placeholder="Status" name="status" class="form-control" id="status">
+    </div>
+
+    <button class="btn btn-success" (click)="updateScore()" >Update</button>
+
+
+  </form>
+</div>

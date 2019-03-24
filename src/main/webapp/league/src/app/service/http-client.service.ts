@@ -23,6 +23,13 @@ export class Player{
   ) {}
 }
 
+export class Scorer{
+  constructor(
+    public teamId:string,
+    public status:string
+     ) {}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,10 +37,14 @@ export class HttpClientService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getTeam()
+    getTeam()
     {
-      console.log("test call");
       return this.httpClient.get<Team[]>('http://localhost:8082/team');
+    }
+
+    getPlayer()
+    {
+      return this.httpClient.get<Player[]>('http://localhost:8082/players');
     }
 
     public createTeam(team) {
@@ -43,5 +54,10 @@ export class HttpClientService {
     public createPlayer(player) {
             console.log(player);
             return this.httpClient.post<Player>("http://localhost:8082/addplayers", player);
+    }
+
+    public updateScore(scorer) {
+                console.log(scorer);
+                return this.httpClient.post<Scorer>("http://localhost:8082/scorecalc", scorer);
     }
 }

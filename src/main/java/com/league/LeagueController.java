@@ -3,9 +3,12 @@ package com.league;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -21,7 +24,8 @@ public class LeagueController {
 
     @RequestMapping("/players")
     public List<Player> getAllPlayers() {
-        return leagueService.getAllPlayers();
+        List<Player> out = leagueService.getAllPlayers().stream().sorted(Comparator.comparing(Player::getScore)).collect(Collectors.toList());
+        return out;
     }
 
     @RequestMapping("/team")
@@ -57,9 +61,9 @@ public class LeagueController {
         return leagueService.addTeam(team);
     }
 
-    @RequestMapping("/scorecalc")
-    public List<Player> updateScore(int teamId,String status) {
-        return leagueService.updateScore(teamId,status);
+    @PostMapping("/scorecalc")
+    public void updateScore(@RequestBody  Scorer scorer) {
+         leagueService.updateScore(scorer);
     }
 
 }

@@ -57,27 +57,38 @@ public class LeagueService {
 
         return getAllTeams();
 }
-    public List<Player> updateScore(int teamId, String status) {
-        getAllPlayers().parallelStream().forEach(p->{
-            Optional<Team> teamOpt = getAllTeams().parallelStream().filter(t ->  teamId == t.getTeamId()).findFirst();
+    public void updateScore(Scorer scorer) {
+
+        int teamId = scorer.getTeamId();
+        String status = scorer.getStatus();
+
+       List<Player> players =   getAllPlayers();
+
+        players.stream().forEach(p->{
+            Optional<Team> teamOpt = getAllTeams().stream().filter(t ->  teamId == t.getTeamId()).findFirst();
 
             if(teamOpt.isPresent() && p.getTeamLst().contains(teamId)) {
                 Team team = teamOpt.get();
-                AtomicInteger score = new AtomicInteger(p.getScore());
+                int score = p.getScore();
                 if ("win".equalsIgnoreCase(status)) {
-                        score.set(score.get() + team.getWin());
+                     score = score+ team.getWin();
                     } else if ("lose".equalsIgnoreCase(status)) {
-                        score.set(score.get() - team.getLose());
+                    score = score - team.getLose();
+                    } else if ("draw".equalsIgnoreCase(status)) {
+                    score = score+ team.getDraw();
                     } else if ("bonus".equalsIgnoreCase(status)) {
-                        score.set(score.get() + team.getBonus());
-                    } else if ("bonus".equalsIgnoreCase(status)) {
-                    score.set(score.get() + team.getDraw());
+                    score = score+ team.getBonus();
                     } else {
                         score=score;
                     }
-                p.setScore(score.get());
+                    p.setScore(score);
             }
         });
-        return getAllPlayers();
+
+
+
+
+
+
     }
 }

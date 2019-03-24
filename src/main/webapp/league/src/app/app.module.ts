@@ -13,6 +13,8 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import {OrderListModule} from 'primeng/orderlist';
 import {TableModule} from 'primeng/table';
 import {PickListModule} from 'primeng/picklist';
+import { LeaderComponent } from './leader/leader.component';
+import { UpdatescoreComponent } from './updatescore/updatescore.component';
 
 
 
@@ -23,7 +25,9 @@ import {PickListModule} from 'primeng/picklist';
     AddteamComponent,
     HeaderComponent,
     FooterComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    LeaderComponent,
+    UpdatescoreComponent
   ],
   imports: [
     BrowserModule,
