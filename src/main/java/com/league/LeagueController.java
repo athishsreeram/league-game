@@ -24,7 +24,7 @@ public class LeagueController {
 
     @RequestMapping("/players")
     public List<Player> getAllPlayers() {
-        List<Player> out = leagueService.getAllPlayers().stream().sorted(Comparator.comparing(Player::getScore)).collect(Collectors.toList());
+        List<Player> out = leagueService.getAllPlayers().stream().sorted(Comparator.comparing(Player::getScore).reversed()).collect(Collectors.toList());
         return out;
     }
 
