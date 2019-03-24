@@ -70,6 +70,8 @@ public class LeagueService {
                         score.set(score.get() - team.getLose());
                     } else if ("bonus".equalsIgnoreCase(status)) {
                         score.set(score.get() + team.getBonus());
+                    } else if ("bonus".equalsIgnoreCase(status)) {
+                    score.set(score.get() + team.getDraw());
                     } else {
                         score=score;
                     }

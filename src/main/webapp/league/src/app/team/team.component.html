@@ -1,0 +1,20 @@
+<table border="1">
+  <thead></thead>
+  <tr>
+    <th>name</th>
+    <th>win</th>
+    <th>lose</th>
+    <th>draw</th>
+    <th>bonus</th>
+  </tr>
+
+  <tbody>
+  <tr *ngFor="let t  of team">
+    <td>{{t.name}}</td>
+    <td>{{t.win}}</td>
+    <td>{{t.lose}}</td>
+    <td>{{t.draw}}</td>
+    <td>{{t.bonus}}</td>
+  </tr>
+  </tbody>
+</table>

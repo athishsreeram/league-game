@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class LeagueController {
@@ -31,6 +32,14 @@ public class LeagueController {
 
     @PostMapping("/addplayers")
     public List<Player> addPlayer( @RequestBody Player player) {
+       int playId = leagueService.getAllPlayers().stream().mapToInt(v -> v.getPlayId())
+                .max().orElseThrow(NoSuchElementException::new);
+       player.setPlayId(playId + 1);
+       return leagueService.addPlayer(player);
+    }
+
+    @PostMapping("/updateplayers")
+    public List<Player> updatePlayer( @RequestBody Player player) {
         return leagueService.addPlayer(player);
     }
 

@@ -7,6 +7,7 @@ public class Team {
     public int win;
     public int lose;
     public int bonus;
+    public int draw;
 
     public int getTeamId() {
         return teamId;
@@ -46,5 +47,13 @@ public class Team {
 
     public void setBonus(int bonus) {
         this.bonus = bonus;
+    }
+
+    public int getDraw() {
+        return draw;
+    }
+
+    public void setDraw(int draw) {
+        this.draw = draw;
     }
 }
