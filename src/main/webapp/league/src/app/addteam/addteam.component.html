@@ -1,0 +1,31 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Team</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" [(ngModel)]="team.name" placeholder="Name" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="win">Win:</label>
+      <input [(ngModel)]="team.win" placeholder="Win" name="designation" class="form-control" id="win">
+    </div>
+
+    <div class="form-group">
+      <label for="lose">Lose</label>
+      <input [(ngModel)]="team.lose" placeholder="Lose" name="Lose" class="form-control" id="lose">
+    </div>
+
+    <div class="form-group">
+      <label for="lose">Draw</label>
+      <input [(ngModel)]="team.draw" placeholder="Draw" name="Draw" class="form-control" id="draw">
+    </div>
+
+    <div class="form-group">
+      <label for="bonus">Bonus</label>
+      <input [(ngModel)]="team.bonus" placeholder="Bonus" name="Bonus" class="form-control" id="bonus">
+    </div>
+
+    <button class="btn btn-success" (click)="createTeam()">Create</button>
+  </form>
+</div>

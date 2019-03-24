@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from '../service/http-client.service';
 
 @Component({
   selector: 'app-team',
@@ -14,14 +15,15 @@ team:string[];
     ) { }
 
   ngOnInit() {
-      this.httpClientService.getEmployee().subscribe(
+      this.httpClientService.getTeam().subscribe(
        response =>this.handleSuccessfulResponse(response),
       );
   }
 
   handleSuccessfulResponse(response)
   {
-      this.team=response;
+  console.log(response);
+  this.team=response;
   }
 
 }

@@ -9,7 +9,17 @@ export class Team{
     public win:string,
     public lose:string,
     public bonus:string,
-    public draw:string,
+    public draw:string
+  ) {}
+}
+
+export class Player{
+  constructor(
+    public playId:string,
+    public playerName:string,
+    public email:string,
+    public score:string,
+    public teamLst:string[]
   ) {}
 }
 
@@ -24,5 +34,13 @@ export class HttpClientService {
     {
       console.log("test call");
       return this.httpClient.get<Team[]>('http://localhost:8082/team');
+    }
+
+    public createTeam(team) {
+        return this.httpClient.post<Team>("http://localhost:8082/addteam", team);
+    }
+
+    public createPlayer(player) {
+            return this.httpClient.post<Player>("http://localhost:8082/addPlayers", player);
     }
 }
