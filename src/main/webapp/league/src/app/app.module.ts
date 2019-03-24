@@ -11,6 +11,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import {OrderListModule} from 'primeng/orderlist';
+import {TableModule} from 'primeng/table';
+import {PickListModule} from 'primeng/picklist';
+
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import {OrderListModule} from 'primeng/orderlist';
     AppRoutingModule,
     HttpClientModule,
      FormsModule,
-     OrderListModule
+     OrderListModule,
+     TableModule,
+     PickListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

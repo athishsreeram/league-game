@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -31,7 +32,7 @@ public class LeagueController {
     @PostMapping("/addplayers")
     public List<Player> addPlayer( @RequestBody Player player) {
        int playId = leagueService.getAllPlayers().stream().mapToInt(v -> v.getPlayId())
-                .max().orElseThrow(NoSuchElementException::new);
+                .max().orElse(0);
        player.setPlayId(playId + 1);
        return leagueService.addPlayer(player);
     }
@@ -43,6 +44,16 @@ public class LeagueController {
 
     @PostMapping("/addteam")
     public List<Team> addTeam(  @RequestBody Team team) {
+
+        Optional<Team> teamExist = leagueService.getAllTeams().stream().filter(v -> v.getName().equalsIgnoreCase(team.getName())).findFirst();
+
+        int teamId = leagueService.getAllTeams().stream().mapToInt(v -> v.getTeamId())
+                .max().orElse(0);
+        if( !teamExist.isPresent() )
+            team.setTeamId(teamId + 1);
+        else
+            team.setTeamId(teamExist.get().getTeamId());
+
         return leagueService.addTeam(team);
     }
 

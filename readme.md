@@ -26,3 +26,5 @@ update Player Score
 
 List all Player Order by score
 
+npm install primeng font-awesome
+npm i -g @angular/cli

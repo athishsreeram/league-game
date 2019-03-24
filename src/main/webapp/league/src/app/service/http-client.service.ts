@@ -41,6 +41,7 @@ export class HttpClientService {
     }
 
     public createPlayer(player) {
-            return this.httpClient.post<Player>("http://localhost:8082/addPlayers", player);
+            console.log(player);
+            return this.httpClient.post<Player>("http://localhost:8082/addplayers", player);
     }
 }

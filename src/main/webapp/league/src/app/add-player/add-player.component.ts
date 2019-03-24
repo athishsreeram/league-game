@@ -9,8 +9,10 @@ import { HttpClientService, Player,Team } from '../service/http-client.service';
 })
 export class AddPlayerComponent implements OnInit {
 
-  team: Team[];
+  team: Team[]  = [];
+  teamTgt: Team[]  = [];
   player: Player = new Player("","","","",[]);
+  boolean: disablePl  = false;
 
  constructor(
        private httpClientService:HttpClientService
@@ -26,10 +28,21 @@ export class AddPlayerComponent implements OnInit {
    }
 
   createPlayer(): void {
-      this.httpClientService.createPlayer(this.player)
-          .subscribe( data => {
-            alert("Team created successfully.");
-          });
+
+
+      if(this.teamTgt.length == 4){
+
+      var i;
+          for (i = 0; i < this.teamTgt.length; i++) {
+                   console.log(this.teamTgt[i].teamId);
+                  this.player.teamLst.push(this.teamTgt[i].teamId);
+              }
+
+        this.httpClientService.createPlayer(this.player)
+            .subscribe( data => {
+              alert("Team created successfully.");
+            });
+       }
 
     };
 
@@ -38,5 +51,26 @@ export class AddPlayerComponent implements OnInit {
       console.log(response);
           this.team=response;
       }
+
+      addTeamTrgt(event: any) {
+         var target = event.items;
+
+
+
+         if(this.teamTgt.length == 4)
+         {
+              console.log("teamTgt ");
+              console.log(this.teamTgt);
+              this.disablePl = true;
+          }else if(this.teamTgt.length > 4)
+          {
+
+            this.team =  this.teamTgt;
+            this.teamTgt = [];
+
+          }
+
+      }
+
 
 }
