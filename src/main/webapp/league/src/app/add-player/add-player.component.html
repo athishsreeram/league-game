@@ -1,0 +1,25 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Team</h2>
+  <form>
+    <div class="form-group">
+      <label for="playerName">PlayerName:</label>
+      <input [(ngModel)]="player.playerName" placeholder="PlayerName" name="playerName" class="form-control" id="playerName">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input [(ngModel)]="player.email" placeholder="Email" name="Email" class="form-control" id="email">
+    </div>
+
+    <button class="btn btn-success" (click)="createPlayer()">Create</button>
+    <p-orderList [value]="team">
+      <ng-template let-t pTemplate="item">
+        <div class="ui-helper-clearfix">
+          <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{t.name}}</div>
+        </div>
+      </ng-template>
+    </p-orderList>
+
+
+  </form>
+</div>
