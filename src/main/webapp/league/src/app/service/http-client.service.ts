@@ -39,25 +39,25 @@ export class HttpClientService {
 
     getTeam()
     {
-      return this.httpClient.get<Team[]>('http://league-ipl.herokuapp.com/team');
+      return this.httpClient.get<Team[]>('https://league-ipl.herokuapp.com/team');
     }
 
     getPlayer()
     {
-      return this.httpClient.get<Player[]>('http://league-ipl.herokuapp.com/players');
+      return this.httpClient.get<Player[]>('https://league-ipl.herokuapp.com/players');
     }
 
     public createTeam(team) {
-        return this.httpClient.post<Team>("http://league-ipl.herokuapp.com/addteam", team);
+        return this.httpClient.post<Team>("https://league-ipl.herokuapp.com/addteam", team);
     }
 
     public createPlayer(player) {
             
-            return this.httpClient.post<Player>("http://league-ipl.herokuapp.com/addplayers", player);
+            return this.httpClient.post<Player>("https://league-ipl.herokuapp.com/addplayers", player);
     }
 
     public updateScore(scorer) {
                
-                return this.httpClient.post<Scorer>("http://league-ipl.herokuapp.com/scorecalc", scorer);
+                return this.httpClient.post<Scorer>("https://league-ipl.herokuapp.com/scorecalc", scorer);
     }
 }
