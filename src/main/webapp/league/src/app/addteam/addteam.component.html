@@ -1,4 +1,10 @@
 <div class="col-md-6">
+<input type="password" [(ngModel)]="pass" class="form-control" id="password">
+<button class="btn btn-success" (click)="check()">Create</button>
+</div>
+
+<ng-template [ngIf]="display == 'true'" >
+<div class="col-md-6">
   <h2 class="text-center">Add Team</h2>
   <form>
     <div class="form-group">
@@ -29,3 +35,4 @@
     <button class="btn btn-success" (click)="createTeam()">Create</button>
   </form>
 </div>
+</ng-template>

@@ -9,6 +9,8 @@ import { HttpClientService, Scorer } from '../service/http-client.service';
 export class UpdatescoreComponent implements OnInit {
 
  scorer: Scorer = new Scorer("","");
+ display: String = "false";
+ pass: String = "";
 
   constructor(
          private httpClientService:HttpClientService
@@ -26,5 +28,12 @@ export class UpdatescoreComponent implements OnInit {
             });
    }
 
+    check(): void {
+    if(this.pass == "xbox"){
+		this.display = "true";
+	}else{
+		this.display = "false";
+	}
 
+  };
 }

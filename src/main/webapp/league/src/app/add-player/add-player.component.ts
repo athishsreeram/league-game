@@ -32,7 +32,7 @@ export class AddPlayerComponent implements OnInit {
   createPlayer(): void {
 
 
-      if(this.teamTgt.length == 1){
+      if(this.teamTgt.length == 4){
 
       var i;
           for (i = 0; i < this.teamTgt.length; i++) {
@@ -59,12 +59,12 @@ export class AddPlayerComponent implements OnInit {
 
 
 
-         if(this.teamTgt.length == 1)
+         if(this.teamTgt.length == 4)
          {
               console.log("teamTgt ");
               console.log(this.teamTgt);
               this.disablePl = true;
-          }else if(this.teamTgt.length > 1)
+          }else if(this.teamTgt.length > 4)
           {
 
             this.team =  this.teamTgt;

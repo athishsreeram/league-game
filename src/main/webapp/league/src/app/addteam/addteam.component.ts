@@ -15,6 +15,8 @@ import { HttpClientService, Team } from '../service/http-client.service';
 export class AddteamComponent implements OnInit {
 
  team: Team = new Team("","","","","","");
+ display: String = "false";
+ pass: String = "";
 
    constructor(
      private httpClientService: HttpClientService
@@ -31,5 +33,15 @@ createTeam(): void {
         });
 
   };
+  
+  check(): void {
+    if(this.pass == "xbox"){
+		this.display = "true";
+	}else{
+		this.display = "false";
+	}
+
+  };
+  
 
 }
