@@ -71,14 +71,13 @@ var AddPlayerComponent = /** @class */ (function () {
     }
     AddPlayerComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.disablePl = true;
+        this.disablePl = false;
         this.httpClientService.getTeam().subscribe(function (response) { return _this.handleSuccessfulResponse(response); });
     };
     AddPlayerComponent.prototype.createPlayer = function () {
         if (this.teamTgt.length == 4) {
             var i;
             for (i = 0; i < this.teamTgt.length; i++) {
-                console.log(this.teamTgt[i].teamId);
                 this.player.teamLst.push(this.teamTgt[i].teamId);
             }
             this.httpClientService.createPlayer(this.player)
@@ -89,14 +88,11 @@ var AddPlayerComponent = /** @class */ (function () {
     };
     ;
     AddPlayerComponent.prototype.handleSuccessfulResponse = function (response) {
-        console.log(response);
         this.team = response;
     };
     AddPlayerComponent.prototype.addTeamTrgt = function (event) {
         var target = event.items;
         if (this.teamTgt.length == 4) {
-            console.log("teamTgt ");
-            console.log(this.teamTgt);
             this.disablePl = true;
         }
         else if (this.teamTgt.length > 4) {

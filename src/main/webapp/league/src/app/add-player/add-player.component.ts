@@ -12,7 +12,7 @@ export class AddPlayerComponent implements OnInit {
   team: Team[]  = [];
   teamTgt: Team[]  = [];
   player: Player = new Player("","","","",[]);
-  disablePl  = false;
+  disablePl:Boolean  = false; 
 
  constructor(
        private httpClientService:HttpClientService
@@ -20,7 +20,7 @@ export class AddPlayerComponent implements OnInit {
 
    ngOnInit() {
 
-   this.disablePl  = true;
+   this.disablePl  = false;
 
    this.httpClientService.getTeam().subscribe(
           response =>this.handleSuccessfulResponse(response),
@@ -36,7 +36,6 @@ export class AddPlayerComponent implements OnInit {
 
       var i;
           for (i = 0; i < this.teamTgt.length; i++) {
-                   console.log(this.teamTgt[i].teamId);
                   this.player.teamLst.push(this.teamTgt[i].teamId);
               }
 
@@ -50,19 +49,14 @@ export class AddPlayerComponent implements OnInit {
 
     handleSuccessfulResponse(response)
       {
-      console.log(response);
           this.team=response;
       }
 
       addTeamTrgt(event: any) {
          var target = event.items;
 
-
-
          if(this.teamTgt.length == 4)
          {
-              console.log("teamTgt ");
-              console.log(this.teamTgt);
               this.disablePl = true;
           }else if(this.teamTgt.length > 4)
           {
