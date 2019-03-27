@@ -29,10 +29,7 @@ public class LeagueService {
         if( leagueData.getAllPlayer().stream().filter(p1->
             p1.getEmail().equalsIgnoreCase(p.getEmail())
         ).findFirst().isPresent()){
-            leagueData.getAllPlayer().removeIf(p1->
-                    p1.getEmail().equalsIgnoreCase(p.getEmail())
-            );
-            leagueData.addPlayer(p);
+            leagueData.updatePlayer(p);
          }else{
            leagueData.addPlayer(p);
        }
@@ -46,10 +43,8 @@ public class LeagueService {
         if( leagueData.getAllTeams().stream().filter(t1->
                 (t.getTeamId() == t1.getTeamId())
         ).findFirst().isPresent()){
-            leagueData.getAllTeams().removeIf(t1->
-                    (t.getTeamId() == t1.getTeamId())
-            );
-            leagueData.addTeam(t);
+
+            leagueData.updateTeam(t);
         }else{
             leagueData.addTeam(t);
         }

@@ -17,7 +17,7 @@ public class LeagueController {
     @Autowired
     LeagueService leagueService;
 
-    @RequestMapping("/")
+    @RequestMapping("/ping")
     public String index() {
         return "Greetings from Spring Boot!";
     }
