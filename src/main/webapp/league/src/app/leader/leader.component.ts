@@ -27,13 +27,13 @@ export class LeaderComponent implements OnInit {
 
     handleSuccessfulResponseTeam(response)
     {
-      console.log(response);
+      
       this.team=response;
     }
 
    handleSuccessfulResponse(response)
    {
-     console.log(response);
+     
      this.player=response;
    }
 

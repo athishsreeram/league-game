@@ -22,7 +22,7 @@ team:string[];
 
   handleSuccessfulResponse(response)
   {
-  console.log(response);
+  
   this.team=response;
   }
 

@@ -20,7 +20,7 @@ export class AddPlayerComponent implements OnInit {
 
    ngOnInit() {
 
-   this.disablePl  = false;
+   this.disablePl  = true;
 
    this.httpClientService.getTeam().subscribe(
           response =>this.handleSuccessfulResponse(response),

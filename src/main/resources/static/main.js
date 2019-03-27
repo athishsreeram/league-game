@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n  <h2 class=\"text-center\">Add Team</h2>\n  <form>\n    <div class=\"form-group\">\n      <label for=\"playerName\">PlayerName:</label>\n      <input [(ngModel)]=\"player.playerName\" placeholder=\"PlayerName\" name=\"playerName\" class=\"form-control\" id=\"playerName\">\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"email\">Email:</label>\n      <input [(ngModel)]=\"player.email\" placeholder=\"Email\" name=\"Email\" class=\"form-control\" id=\"email\">\n    </div>\n\n\n    <p-pickList  [source]=\"team\" [target]=\"teamTgt\" sourceHeader=\"Available Team\" targetHeader=\"Selected Team\" (onMoveToTarget)=\"addTeamTrgt($event)\" [disabled]=\"disablePl\">\n      <ng-template let-t pTemplate=\"item\">\n        <div class=\"ui-helper-clearfix\">\n          <div style=\"font-size:14px;float:right;margin:15px 5px 0 0\">{{t.name}}</div>\n        </div>\n      </ng-template>\n    </p-pickList>\n\n    <button class=\"btn btn-success\" (click)=\"createPlayer()\" [disabled]=\"!disablePl\">Create</button>\n\n\n  </form>\n</div>\n"
+module.exports = "<div class=\"col-md-6\">\n  <h2 class=\"text-center\">Choose your Teams</h2>\n\n  <p> Enter your nick name, email and  Choose 4 teams check the View Team Points to choose</p>\n\n  <form>\n    <div class=\"form-group\">\n      <label for=\"playerName\">PlayerName:</label>\n      <input [(ngModel)]=\"player.playerName\"   #pn=\"ngModel\" placeholder=\"PlayerName\" name=\"playerName\" class=\"form-control\" id=\"playerName\" required>\n    </div>\n\t\n\t<div class=\"md-errors-spacer\" [hidden]=\"pn.valid || pn.untouched\">\n            <div  *ngIf=\"pn.errors && pn.errors.required\">\n                Player Name is required\n            </div>\n            <div  *ngIf=\"pn.errors && pn.errors.pattern\">\n                Player Name is invalid\n            </div>\n    </div>\n\n\n    <div class=\"form-group\">\n      <label for=\"email\">Email:</label>\n      <input [(ngModel)]=\"player.email\" placeholder=\"Email\" name=\"Email\" class=\"form-control\" id=\"email\" #contactemail=\"ngModel\" required\n                pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\">\n    </div>\n\t\n\t<div class=\"md-errors-spacer\" [hidden]=\"contactemail.valid || contactemail.untouched\">\n            <div  *ngIf=\"contactemail.errors && contactemail.errors.required\">\n                Email is required\n            </div>\n            <div  *ngIf=\"contactemail.errors && contactemail.errors.pattern\">\n                Email is invalid\n            </div>\n    </div>\n\n\n    <p-pickList  [source]=\"team\" [target]=\"teamTgt\" sourceHeader=\"Available Team\" targetHeader=\"Selected Team\" (onMoveToTarget)=\"addTeamTrgt($event)\" [disabled]=\"disablePl\">\n      <ng-template let-t pTemplate=\"item\">\n        <div class=\"ui-helper-clearfix\">\n          <div style=\"font-size:14px;float:right;margin:15px 5px 0 0\">{{t.name}}</div>\n        </div>\n      </ng-template>\n    </p-pickList>\n\n    <button class=\"btn btn-success\" (click)=\"createPlayer()\" [disabled]=\"!disablePl\">Create</button>\n\n\n  </form>\n\n  <p style=\"font-size:1vw;\">\n    Game Rule:\n\t</p>\n<ul>\n  <li>  Score are calculted on the below rules:</li>\n\n  <li> WIN   - if your team win the game you get the win points added to your score</li>\n <li> LOSE  -  if your team lose the game you lose the points from your score</li>\n  <li> DRAW  - if your team draw the game you get the win points added to your score </li>\n  <li> BONUS - if your team Enter top 4 you get the bonus points added to your score  </li>\n\n    <li> Check the View Team Points for individual team points</li>\n\n  <li>  Let us see if you end as Top Player </li>\n\n</ul>\t\n  \n</div>\n"
 
 /***/ }),
 
@@ -71,7 +71,7 @@ var AddPlayerComponent = /** @class */ (function () {
     }
     AddPlayerComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.disablePl = false;
+        this.disablePl = true;
         this.httpClientService.getTeam().subscribe(function (response) { return _this.handleSuccessfulResponse(response); });
     };
     AddPlayerComponent.prototype.createPlayer = function () {
@@ -400,7 +400,7 @@ module.exports = " .footer {\r\n    position: absolute;\r\n    bottom: 0;\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\n  <div class=\"container\">\n    <span class=\"text-muted\">All Rights Reserved 2019 @Game</span>\n  </div>\n\n</footer>\n"
+module.exports = "<footer>\n  \n\n</footer>\n"
 
 /***/ }),
 
@@ -456,7 +456,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <nav class =\"navbar navbar-expand-md navbar-dark bg-dark\">\n    <div></div>\n\n    <ul class=\"navbar-nav\">\n      <li><a  routerLink=\"/\" class=\"nav-link\">Leader Board</a></li>\n      <li><a  routerLink=\"/addPlayer\" class=\"nav-link\">Register</a></li>\n      <li><a  routerLink=\"/viewTeam\" class=\"nav-link\">View Team</a></li>\n      <li><a  routerLink=\"/updateScore\" class=\"nav-link\">Update Score</a></li>\n\t  <li><a  routerLink=\"/addTeam\" class=\"nav-link\">Add New Team</a></li>\n    </ul>\n\n  </nav>\n\n</header>\n"
+module.exports = "<header>\n\n\n    <div class=\"navbar\">\n     <a  routerLink=\"/\" >Top Player</a>\n     <a  routerLink=\"/addPlayer\" >Register</a>\n     <a  routerLink=\"/viewTeam\" >View Team Points</a>\n     <a  routerLink=\"/updateScore\" >Update Score</a>\n\t    <a  routerLink=\"/addTeam\" >Add New Team</a>\n    </div>\n\n</header>\n"
 
 /***/ }),
 
@@ -542,11 +542,9 @@ var LeaderComponent = /** @class */ (function () {
         this.httpClientService.getPlayer().subscribe(function (response) { return _this.handleSuccessfulResponse(response); });
     };
     LeaderComponent.prototype.handleSuccessfulResponseTeam = function (response) {
-        console.log(response);
         this.team = response;
     };
     LeaderComponent.prototype.handleSuccessfulResponse = function (response) {
-        console.log(response);
         this.player = response;
     };
     LeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -628,11 +626,9 @@ var HttpClientService = /** @class */ (function () {
         return this.httpClient.post("https://league-ipl.herokuapp.com/addteam", team);
     };
     HttpClientService.prototype.createPlayer = function (player) {
-        console.log(player);
         return this.httpClient.post("https://league-ipl.herokuapp.com/addplayers", player);
     };
     HttpClientService.prototype.updateScore = function (scorer) {
-        console.log(scorer);
         return this.httpClient.post("https://league-ipl.herokuapp.com/scorecalc", scorer);
     };
     HttpClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -695,7 +691,6 @@ var TeamComponent = /** @class */ (function () {
         this.httpClientService.getTeam().subscribe(function (response) { return _this.handleSuccessfulResponse(response); });
     };
     TeamComponent.prototype.handleSuccessfulResponse = function (response) {
-        console.log(response);
         this.team = response;
     };
     TeamComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
