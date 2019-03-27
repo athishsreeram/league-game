@@ -619,21 +619,21 @@ var HttpClientService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     HttpClientService.prototype.getTeam = function () {
-        return this.httpClient.get('http://localhost:8082/team');
+        return this.httpClient.get('https://league-ipl.herokuapp.com/team');
     };
     HttpClientService.prototype.getPlayer = function () {
-        return this.httpClient.get('http://localhost:8082/players');
+        return this.httpClient.get('https://league-ipl.herokuapp.com/players');
     };
     HttpClientService.prototype.createTeam = function (team) {
-        return this.httpClient.post("http://localhost:8082/addteam", team);
+        return this.httpClient.post("https://league-ipl.herokuapp.com/addteam", team);
     };
     HttpClientService.prototype.createPlayer = function (player) {
         console.log(player);
-        return this.httpClient.post("http://localhost:8082/addplayers", player);
+        return this.httpClient.post("https://league-ipl.herokuapp.com/addplayers", player);
     };
     HttpClientService.prototype.updateScore = function (scorer) {
         console.log(scorer);
-        return this.httpClient.post("http://localhost:8082/scorecalc", scorer);
+        return this.httpClient.post("https://league-ipl.herokuapp.com/scorecalc", scorer);
     };
     HttpClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
