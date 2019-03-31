@@ -17,18 +17,18 @@ public class LeagueController {
     @Autowired
     LeagueService leagueService;
 
-    @RequestMapping("/ping")
+    @GetMapping("/ping")
     public String index() {
         return "Greetings from Spring Boot!";
     }
 
-    @RequestMapping("/players")
+    @GetMapping("/players")
     public List<Player> getAllPlayers() {
         List<Player> out = leagueService.getAllPlayers().stream().sorted(Comparator.comparing(Player::getScore).reversed()).collect(Collectors.toList());
         return out;
     }
 
-    @RequestMapping("/team")
+    @GetMapping("/team")
     public List<Team> getAllTeam() {
         return leagueService.getAllTeams();
     }

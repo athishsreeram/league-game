@@ -5,9 +5,17 @@ import org.dizitart.no2.Document;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.tool.ExportOptions;
+import org.dizitart.no2.tool.Exporter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +27,11 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 public class LeagueData {
 
     Nitrite db = null;
+    String schemaFile = System.getProperty("user.dir") + "/uploads/";
 
     @PostConstruct
     public void creatDB(){
-        //  initialization
-        db = Nitrite.builder()
-                .compressed()
-                .filePath(System.getProperty("user.dir") + "/test.db")
-                .openOrCreate("user", "user");
-
-
+        start("test.db");
     }
 
 
@@ -124,4 +127,18 @@ public class LeagueData {
         // update the document
         repository.update(eq("name",t.getName()), doc);
     }
+
+    public void close(){
+        db.close();
+    }
+
+    public void start(String fileName){
+        //  initialization
+        db = Nitrite.builder()
+                .compressed()
+                .filePath(schemaFile + fileName)
+                .openOrCreate("user", "user");
+    }
+
+
 }
